@@ -13,13 +13,18 @@ ESTADOS = 8
 MUTACAO = 0.5
 
 # Taxa de cruzamento
-TAXA_CRUZAMENTO = 0.5
+TAXA_CRUZAMENTO = 0.7
+
+def cromossomo(estados):
+    """ Gera um cromossomo com estados = ESTADOS """
+    return np.random.randint(0, estados, size=estados)
+
 
 def gerarPopulacaoInicial(tamanho_populacao, estados):
-    """Gera uma população inicial de tamanho = tamanho_populacao com estados = ESTADOS"""
+    """ Gera uma população inicial de tamanho = tamanho_populacao com estados = ESTADOS """
     populacao = []
     for i in range(tamanho_populacao):
-        populacao.append(np.random.randint(0, estados, size=estados))
+        populacao.append(cromossomo(estados))
     return populacao
 
 def fitness(populacao):
@@ -46,7 +51,7 @@ def fitness(populacao):
     return fit
 
 def fitnessIndividuo(individuo):
-    # função de fitness por indivíduo
+    """ função de fitness por indivíduo """
     colisoes = 0
     for i in range(len(individuo)):
         for j in range(i + 1, len(individuo)):
@@ -109,7 +114,7 @@ def mutacao(populacao):
     return populacao
 
 def imprimeTabuleiro(individuo):
-    # Essa função imprime o tabuleiro especificado com as rainhas posicionadas
+    """ Essa função imprime o tabuleiro especificado com as rainhas posicionadas """
     tabuleiro = np.zeros((ESTADOS, ESTADOS))
     for i in range(len(individuo)):
         tabuleiro[individuo[i]][i] = 1
@@ -131,6 +136,7 @@ def estatisticas(geracao, melhorIndividuo):
     print(imprimeTabuleiro(melhorIndividuo))
 
 def algoritmoGenetico():
+    """ Função principal do algoritmo genético """
     populacao = gerarPopulacaoInicial(TAMANHO_POPULACAO, ESTADOS)
     geracao = 0
     for i in range(NUMERO_GERACOES):
@@ -141,7 +147,9 @@ def algoritmoGenetico():
         if np.min(fitness(populacao)) == 0:
             break
         # print("Geração: ", i)
-        # print("Melhor indivíduo: ", populacao[np.argmin(fitness(populacao))])
+        # melhorIndividuo = populacao[np.argmin(fitness(populacao))]
+        # print("Melhor indivíduo: ", melhorIndividuo)
+        # print("Fitness do melhor indivíduo: ", fitnessIndividuo(melhorIndividuo))
         geracao += 1
     return geracao, populacao[np.argmin(fitness(populacao))]
 
