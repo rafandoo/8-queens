@@ -27,29 +27,6 @@ def gerarPopulacaoInicial(tamanho_populacao, estados):
         populacao.append(cromossomo(estados))
     return populacao
 
-def fitness(populacao):
-    """ 
-    Calcula o fitness de cada indivíduo da população
-    
-    O fitness é calculado tendo como base o número de colisões/ataques
-    que cada rainha tem sobre as demais. Levendo em consideração que
-    as rainhas não podem estar na mesma linha, coluna ou diagonal, 
-    para que o individuo seja perfeito, o fitness deve ser 0.
-    """
-    fit = []
-    for individuo in populacao:
-        colisoes = 0
-        for i in range(len(individuo)):
-            for j in range(i + 1, len(individuo)):
-                if individuo[i] == individuo[j]:
-                    colisoes += 1
-                if individuo[i] - individuo[j] == i - j:
-                    colisoes += 1
-                if individuo[i] - individuo[j] == j - i:
-                    colisoes += 1
-        fit.append(colisoes)
-    return fit
-
 def fitnessIndividuo(individuo):
     """ função de fitness por indivíduo """
     colisoes = 0
@@ -62,6 +39,20 @@ def fitnessIndividuo(individuo):
             if individuo[i] - individuo[j] == j - i:
                 colisoes += 1
     return colisoes
+
+def fitness(populacao):
+    """ 
+    Calcula o fitness de cada indivíduo da população
+    
+    O fitness é calculado tendo como base o número de colisões/ataques
+    que cada rainha tem sobre as demais. Levendo em consideração que
+    as rainhas não podem estar na mesma linha, coluna ou diagonal, 
+    para que o individuo seja perfeito, o fitness deve ser 0.
+    """
+    fit = []
+    for i in range(len(populacao)):
+        fit.append(fitnessIndividuo(populacao[i]))
+    return fit
 
 def selecaoCrossover(populacao):
     """
