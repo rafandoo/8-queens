@@ -45,7 +45,7 @@ def fitness(populacao):
     Calcula o fitness de cada indivíduo da população
     
     O fitness é calculado tendo como base o número de colisões/ataques
-    que cada rainha tem sobre as demais. Levendo em consideração que
+    que cada rainha tem sobre as demais. Levando em consideração que
     as rainhas não podem estar na mesma linha, coluna ou diagonal, 
     para que o individuo seja perfeito, o fitness deve ser 0.
     """
