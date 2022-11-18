@@ -35,6 +35,11 @@ Para executar o projeto, basta executar o seguinte comando:
   python main.py
 ```
 
+## Documentos 📄
+
+- [Relatório Técnico](https://github.com/rafandoo/8-rainhas/blob/2b4388ad6b9b2e37f4f3800cbb10fd640822d48c/docs/8%20RAINHAS_%20Aplica%C3%A7%C3%A3o%20de%20algoritmos%20gen%C3%A9ticos.pdf)
+
+
 ## Licença 🔑
 
 The [MIT License](https://github.com/rafandoo/8-queens/blob/636a0e5871ec5e259c94c99bc116c6bc86d6d38e/LICENSE) (MIT)
